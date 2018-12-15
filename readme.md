@@ -1,11 +1,29 @@
 # Kubernetes in a Nutshell
 
+## Table of Content
+<!-- TOC depthFrom:3 -->
+
+- [Architecture](#overview)
+  * [Cluster, Master and Nodes](#clusters)
+- [Pods](#pods)
+  * [Pods vs. Containers](#pods_containers)
+  * [Microservices and Pods](#microservices_containers)
+  * [Deployment of Pods](#deployment_of_pods)
+  * [Intra-Pod communication](#intra_pod)
+  * [Pods and Control Groups](#cgroups)
+- [Deployment](#deployment)
+  * [Declarative Model](#declarative_model)
+- [Services](#services)
+
+
+<a name="overview"></a>
 ## Architecture
 
 <table><tr><td>
 <img align="center" src="./pics/overview.png" title="Architectual Overview" width="300">
 </td></tr></table>
 
+<a name="clusters"></a>
 ### Cluster, Master and Nodes
 
 <table><tr><td>
@@ -19,6 +37,7 @@
 </td></tr></table>
 
 
+<a name="pods"></a>
 ## Pods - _"It's all about Pods"_
 A Pod is an atomic unit of deployment in K8S.
 
@@ -26,6 +45,7 @@ A Pod is an atomic unit of deployment in K8S.
 2. Docker does containers
 3. _**Kubernetes does Pods**_
 
+<a name="pods_containers"></a>
 ### Pods vs. Containers
 - containers run in Pods (>= 1 container per Pod)
 - Pods are a shared execution environment for one or more containers
@@ -34,23 +54,25 @@ A Pod is an atomic unit of deployment in K8S.
 - multi-containers Pods useful for >1 containers sharing resources i.e. logging and service meshes
 - more common are single-container Pods
 
+<a name="microservices_containers"></a>
 ### Microservices and Pods
 One concern for one container i.e. one container for web-service and one container for file-sync service
 
+<a name="deployment_of_pods"></a>
 ### Deployment of Pods
-
 - to deploy we define a _manifest file_ and post that file to the API server
 
+<a name="intra_pod"></a>
 ### Intra-Pod communication
-
 - every Pod can talk directly to every other Pod
 - two containers in one Pod communicate via _localhost_ interface
 
+<a name="cgroups"></a>
 ### Pods and Control Groups (cgroups)
 - _cgroups_ stop conatiners to consume all available CPU, RAM and IOPS on a node (Kind of Police)
 - each container within a Pod can have their own cgroup limits
 
-
+<a name="deployment"></a>
 ## Deployment
 - Deployments bring self-healing, scalability, rolling updates and rollbacks
 - manages just a set of identical Pods
@@ -90,17 +112,30 @@ Creating a Deployment:
   kubectl get deployments
 ```
 
-
-
-
-### Self-Healing and scalability
-
-#### Declarative Model
+<a name="declarative_model"></a>
+### Declarative Model
 - Desired state - Desired state is what you want.
 - Current state - Current state is what you have.
 
 The Declarative model is a way of telling Kubernetes what our desired state is, without getting into the detail of how to implement it. Kubernetes is constantly checking whether _current state_ matches _desired state_.
 
+<a name="services"></a>
 ## Services
 
-TBD
+A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them.
+Services adds reliability to Pods IPs, DNS and Ports. Clients will talk to Services and the service dispatches the requests to Pods.
+
+_**kind: Service**_
+```
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+```
