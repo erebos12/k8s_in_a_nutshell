@@ -96,12 +96,10 @@ Creating a Deployment:
 ### Self-Healing and scalability
 
 #### Declarative Model
-- Desired state
-  - Desired state is what you want.
-- Current state
-  - Current state is what you have.
+- Desired state - Desired state is what you want.
+- Current state - Current state is what you have.
 
-The Declarative model is a way of telling Kubernetes what our desired state is, without getting into the detail of how to implement it. Kubernetes will take care that both states will match.
+The Declarative model is a way of telling Kubernetes what our desired state is, without getting into the detail of how to implement it. Kubernetes is constantly checking whether _current state_ matches _desired state_.
 
 ## Services
 
