@@ -2,10 +2,14 @@
 
 ## Architecture
 
+<table><tr><td>
+<img align="center" src="./pics/overview.png" title="Architectual Overview" width="300">
+</td></tr></table>
+
 ### Cluster, Master and Nodes
 
 <table><tr><td>
-<img align="center" src="./pics/cluster.png" title="Deployment with Master" width="300">
+<img align="center" src="./pics/cluster.png" title="Cluster" width="300">
 </td></tr></table>
 
 
@@ -100,3 +104,5 @@ Creating a Deployment:
 The Declarative model is a way of telling Kubernetes what our desired state is, without getting into the detail of how to implement it. Kubernetes will take care that both states will match.
 
 ## Services
+
+TBD
