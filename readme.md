@@ -14,6 +14,7 @@
 - [Deployment](#deployment)
   * [Declarative Model](#declarative_model)
 - [Services](#services)
+  * [Labels and Selectors](#lables)
 
 
 <a name="overview"></a>
@@ -122,8 +123,10 @@ The Declarative model is a way of telling Kubernetes what our desired state is, 
 <a name="services"></a>
 ## Services
 
-A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them.
-Services adds reliability to Pods IPs, DNS and Ports. Clients will talk to Services and the service dispatches the requests to Pods.
+* Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them
+* Services adds reliability to Pods IPs, DNS and Ports through _label selection_
+* Clients will talk to services and the service dispatches the requests to Pods
+* Services also provide load-balancing
 
 _**kind: Service**_
 ```
@@ -139,3 +142,11 @@ spec:
     port: 80
     targetPort: 9376
 ```
+
+<a name="lables"></a>
+### Lables and Selectors
+
+Pods and Services are loosely coupled via _labels_ and _label selectors_.
+<table><tr><td>
+<img align="center" src="./pics/labels_and_selectors.png" title="Deplyoment with Master" width="300">
+</td></tr></table>
