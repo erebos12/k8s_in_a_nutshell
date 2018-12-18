@@ -21,7 +21,7 @@
 ## Architecture
 
 <table><tr><td>
-<img align="center" src="./pics/overview.png" title="Architectual Overview" width="300">
+<img align="center" src="./pics/overview.png" title="Architectual Overview" width="450">
 </td></tr></table>
 
 #### API Server
@@ -41,13 +41,13 @@
 ### Cluster, Master and Nodes
 
 <table><tr><td>
-<img align="center" src="./pics/cluster.png" title="Cluster" width="300">
+<img align="center" src="./pics/cluster.png" title="Cluster" width="450">
 </td></tr></table>
 
 
 
 <table><tr><td>
-<img align="center" src="./pics/k8s_deployment.png" title="Deplyoment with Master" width="300">
+<img align="center" src="./pics/k8s_deployment.png" title="Deplyoment with Master" width="450">
 </td></tr></table>
 
 
@@ -161,5 +161,5 @@ spec:
 
 Pods and Services are loosely coupled via _labels_ and _label selectors_.
 <table><tr><td>
-<img align="center" src="./pics/labels_and_selectors.png" title="Deplyoment with Master" width="300">
+<img align="center" src="./pics/labels_and_selectors.png" title="Deplyoment with Master" width="500">
 </td></tr></table>
