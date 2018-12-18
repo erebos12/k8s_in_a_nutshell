@@ -24,6 +24,19 @@
 <img align="center" src="./pics/overview.png" title="Architectual Overview" width="300">
 </td></tr></table>
 
+#### API Server
+* "frontdoor" into Kubernetes
+* secure RESTful API that we we POST YAML configuration files (or manifest files)
+* YAML files are validated, persisted in cluster store and deployed to cluster
+
+#### Cluster Store - etcd
+* represents persistent memory of the clusters
+* stores the entire configuration and state of the clusters
+* etcd - Distributed database [https://coreos.com/etcd/][4507be7f]
+
+  [5a47b916]: https://coreos.com/etcd/ "etcd"
+  [4507be7f]: https://coreos.com/etcd/ "https://coreos.com/etcd/"
+
 <a name="clusters"></a>
 ### Cluster, Master and Nodes
 
