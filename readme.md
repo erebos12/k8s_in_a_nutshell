@@ -26,16 +26,35 @@
 
 #### API Server
 * "frontdoor" into Kubernetes
-* secure RESTful API that we we POST YAML configuration files (or manifest files)
+* secure RESTful API that we POST YAML configuration files (or manifest files)
 * YAML files are validated, persisted in cluster store and deployed to cluster
 
 #### Cluster Store - etcd
 * represents persistent memory of the clusters
 * stores the entire configuration and state of the clusters
-* etcd - Distributed database [https://coreos.com/etcd/][4507be7f]
+* uses _**etcd**_ - Distributed database [https://coreos.com/etcd/][4507be7f]
 
   [5a47b916]: https://coreos.com/etcd/ "etcd"
   [4507be7f]: https://coreos.com/etcd/ "https://coreos.com/etcd/"
+
+#### Controllers
+
+* Controllers ensure that _current state_ matches the _desired state_ (see [Declarative Model](#declarative_model))
+* Controller Manager is a _Controller of controller_
+* Node Controller
+* Endpoints Controller
+* Namespace Controller
+
+#### Scheduler
+* watches for new work (i.e. new deployments) and assigns it to nodes
+* in background it evaluates resource management and other constraints
+
+#### kubelet
+* main Kubernetes agent that runs on all Nodes
+* kubelet == node
+* registers a node to the clusters and watches at API server for new work assignments
+* reports also if Pod fails on a node and reports it to master
+
 
 <a name="clusters"></a>
 ### Cluster, Master and Nodes
